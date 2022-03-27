@@ -1,0 +1,64 @@
+﻿@model TaskViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <div class="today"></div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
+            <div class="add-control">
+                <form asp-action="Add" method="post">
+                    <div class="form-group has-feedback">
+                        <input type="text" name="taskContent" class="form-control" placeholder="✍️ Add item..." />
+                        <button class="addBtn">Add</button>
+                    </div>
+                </form>
+
+            </div>
+            <p class="err text-danger text-center hidden"><i class="fa fa-warning"></i> Oops! Please, enter name item</p>
+            <p class="no-items text-muted text-center hidden"><i class="fa fa-ban"></i></p>
+            <ul class="todo-list">
+                @foreach (var item in @Model.Tasks)
+                {
+
+                    if (item.Status == true)
+                    {
+                        <form method="post">
+                        <li data-id="M1647852731436">
+                            <div class="checkbox">
+                                <span class="close">
+                                    <button asp-action="Delete" class="fa fa-times close"></button>
+                                </span>
+                                <label>
+                                    <button asp-action="Update" class="checkbox-mask" style="margin-left: -29px; margin-top: -5px; border: 0.5px solid crimson; width: 5px;"></button>
+                                    <input type="text" name="taskId" value="@item.Id" style="display: none" />
+                                    <input type="checkbox">@item.TaskContent
+                                </label>
+                            </div>
+                        </li>
+                        </form>
+                    }
+                    else if (item.Status == false)
+                    {
+                        <form method="post">
+                        <li data-id="M1647852731436" class="danger">
+                            <div class="checkbox">
+                                <span class="close">
+                                    <button asp-action="Delete" class="fa fa-times close"></button>
+                                </span>
+                                <label>
+                                    <input type="text" name="taskId" value="@item.Id" style="display: none" />
+                                    <input type="checkbox">@item.TaskContent
+                                </label>
+                            </div>
+                        </li>
+                        </form>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
