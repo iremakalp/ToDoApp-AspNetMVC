@@ -13,7 +13,7 @@ Backend
 Layered Architecture
 - Layers
   - Entities
-  - DataAccess
+  - DataAccess (Entity Framework)
   - Business
   - Core
   - MvcUI
