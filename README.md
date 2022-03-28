@@ -3,10 +3,10 @@ ToDoApp-AspNetMVC
 Database
 --
 - Task table
-  - Id --> int
-  - TaskContent -->nvarchar
-  - Date --> Date
-  - Status --> bit
+  - Id (int)
+  - TaskContent (nvarchar)
+  - Date (Date)
+  - Status (Bit)
 
 Backend
 --
